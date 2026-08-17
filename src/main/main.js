@@ -48,10 +48,11 @@ function createWindow() {
 
     // 开发环境
     win.loadURL('http://localhost:5173')
-    setInterval(()=>{
-        win.setPosition(1, 0)
+    // TODO bug#26-81701
+    // setInterval(()=>{
+    //     win.setPosition(1, 0)
 
-    },100)
+    // },100)
     // win.webContents.openDevTools() 调试器
 
     win.on('closed', () => {
@@ -97,6 +98,7 @@ ipcMain.handle('custom-adsorption', (event, res) => {
     // const fiX = x - res.appX;
     // const fiY = y - res.appY;
     // win.setPosition(fiX, fiY)
+    // TODO bug#26-81701
     win.setPosition(res.appX, res.appY)
     // win.setPosition(-1, 0)
 })
