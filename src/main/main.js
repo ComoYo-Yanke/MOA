@@ -13,9 +13,9 @@ let win
 function createWindow() {
     win = new BrowserWindow({
         // ----- 尺寸与位置 -----
-        width: 1200,
-        height: 800,
-        minWidth: 900,
+        width: 900,
+        height: 600,
+        minWidth: 700,
         minHeight: 500,
         center: true,
         titleBarStyle: 'hidden',
@@ -37,7 +37,6 @@ function createWindow() {
 
         // ----- 图标与背景 -----
         icon: path.join(__dirname, '../static/assets/icon.ico'),
-        // backgroundColor: '#cdcddf',
 
         // ----- 渲染设置 -----
         webPreferences: {
@@ -49,24 +48,16 @@ function createWindow() {
 
     // 开发环境
     win.loadURL('http://localhost:5173')
+    setInterval(()=>{
+        win.setPosition(1, 0)
 
-    win.webContents.openDevTools()
+    },100)
+    // win.webContents.openDevTools() 调试器
 
     win.on('closed', () => {
         win = null
     })
 
-    // ipcMain.handle('custom-adsorption', (event, res) => {
-    //     if (!win || win.isDestroyed())
-    //         return { success: false }
-    //     console.log('ps: ' + win.getPosition())
-    //     console.log('size: ' + win.getSize())
-
-    //     let x = res.appX;
-    //     let y = res.appY;
-    //     win.setPosition(x, y)
-    //     return { success: true }
-    // })
 }
 
 
@@ -95,7 +86,7 @@ ipcMain.handle('custom-adsorption', (event, res) => {
     console.log('size: ' + win.getSize())
     console.log('data: ' + res.appX + ',' + res.appY)
 
-    
+
     // win.setSize(win.getSize())
     // win.setBounds({
     //     x: res.appX,
