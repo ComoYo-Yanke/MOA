@@ -3,9 +3,9 @@
 
         <!-- 左侧 -->
         <div class="title-bar-left">
-            <!-- <img src="/assets/icon.png" class="app-icon" /> -->
+            <div class="app-icon"></div>
             <span class="title">
-                ⛏ MOA
+                MOA
             </span>
         </div>
 
@@ -131,12 +131,22 @@
 <script setup>
 import { ref } from 'vue';
 
+const emit = defineEmits([
+    'minimize',
+    'close'
+])
+
+
 function minimizeWindow() {
-    window.electronWindow.minimizeWindow()
+    emit('minimize')
+    // window.electronWindow.minimizeWindow()
 }
 
 function closeWindow() {
-    window.electronWindow.closeWindow()
+
+
+    emit('close')
+    // window.electronWindow.closeWindow()
 }
 let isKeyDown = ref(false)
 let dinatesX = ref(0)
@@ -181,7 +191,7 @@ const mouseDown = (e) => {
 
 <style scoped>
 .title-bar {
-    border-radius: 8px 8px 0 0;
+    border-radius: 10px 10px 0 0;
     z-index: 999;
     position: fixed;
     height: 45px;
@@ -220,6 +230,9 @@ const mouseDown = (e) => {
 .app-icon {
     width: 20px;
     height: 20px;
+    user-select: none;
+    background-image: url(../../assets/icon/icon.ico);
+    background-size: cover;
 }
 
 .title {
@@ -241,16 +254,15 @@ const mouseDown = (e) => {
     -webkit-app-region: no-drag;
 }
 
-
 .window-button {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     box-sizing: border-box;
-    margin: 5px;
+    margin: 6px;
     border: none;
     background: transparent;
-    color: white;
+    color: var(--titlebar-text);
     font-size: 30px;
     font-weight: 100;
     cursor: pointer;
