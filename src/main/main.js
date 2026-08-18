@@ -8,7 +8,8 @@ const path = require('path')
 
 
 let win
-
+let i = 0;
+const change = [0,2,1,2,1,2,2,2]
 
 function createWindow() {
     win = new BrowserWindow({
@@ -45,9 +46,12 @@ function createWindow() {
 
     // 开发环境
     win.loadURL('http://localhost:5173')
-    // TODO bug#26-81701
+    // TODO 窗口尺寸随拖拽移动变化测试代码
     // setInterval(()=>{
-    //     win.setPosition(1, 0)
+    //     console.log(i)
+    //     console.log('set:', win.getBounds())
+    //     win.setPosition(i, i)
+    //     i+=1
     // },100)
 
     // win.webContents.openDevTools() 调试器
@@ -59,12 +63,10 @@ function createWindow() {
         console.log('resize:', win.getBounds())
     })
 
-    win.on('move', () => {
-        console.log('move:', win.getBounds())
-    })
-    win.on('will-resize', (event, newBounds) => {
-        console.log("will resize", newBounds)
-    })
+    // win.on('move', () => {
+    //     console.log('move:', win.getBounds())
+    // })
+    
 
 }
 
@@ -78,6 +80,7 @@ function createWindow() {
 // 最小化
 ipcMain.on('window-minimize', () => {
     if (win) win.minimize()
+    // console.log('i:', win.getBounds())
 })
 
 
@@ -88,27 +91,15 @@ ipcMain.on('window-close', () => {
 
 // 拖拽
 ipcMain.handle('custom-adsorption', (event, res) => {
-    // console.log('data: ' + res.appX + ',' + res.appY)
-    // console.log("before", win.getBounds())
-
-    // win.setSize(win.getSize())
-    // win.setBounds({
-    //     x: res.appX,
-    //     y: res.appY,
-    //     width: w,
-    //     height: h
-    // })
-    // const fiX = x - res.appX;
-    // const fiY = y - res.appY;
-    // win.setPosition(fiX, fiY)
-    // TODO bug#26-81701
-
-    win.setPosition(res.appX, res.appY)
-
-    // win.setPosition(-1, 0)
-    // setTimeout(() => {
-    //     console.log("after", win.getBounds())
-    // }, 500)
+    console.log('data: ' + res.appX + ',' + res.appY)
+    
+    const x = res.appX
+    const y = res.appY  
+    const [w, h] = win.getSize();
+    win.setPosition(x, y)
+    // TODO 暂时解决窗口尺寸异常变大问题 存在窗口大小抖动问题 不同环境可能存在差异 
+    // 复刻bug#26-81701请删除此行:
+    win.setSize(w - change[Math.abs(x) % 8], h - change[Math.abs(y) % 8])
 })
 
 
