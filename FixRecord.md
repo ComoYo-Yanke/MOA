@@ -23,11 +23,6 @@ Unified tracking record for project bugs and defects, used for full lifecycle ma
 | bug#26-81701 | 初始功能Bug | 持续跟进优化，结合缺陷统一迭代整改，推进问题完全闭环 | 已完成临时修复，核心功能可用；临时修复引入defect#26-81801 |
 | defect#26-81801 | 缺陷 | 持续跟踪问题复现规律，调试优化代码，迭代修复缺陷，直至问题完全解决 | bug#26-81701临时修复后产生，拖拽窗口调整位置时窗口尺寸抖动，尚未修复 |
 
-### 状态定义说明
-- **待处理**：问题已确认发现，暂未开展修复调试工作
-- **临时修复完成**：核心故障问题解决，功能正常可用，存在轻微缺陷待优化
-- **完全修复闭环**：所有关联问题全部解决，无遗留缺陷，测试验收通过
-- **暂缓处理**：问题确认有效，因版本排期、优先级等因素延后迭代修复
 
 ### 更新日志
 - 2026-08-17：录入bug#26-81701，项目原有核心业务功能异常，完成问题登记。
@@ -50,11 +45,6 @@ This document uniformly records functional bugs and defects during project itera
 | bug#26-81701 | Original Functional Bug | Continue to follow up optimization, conduct iterative rectification together with defects, and promote complete problem closure | Temporary repair completed, core functions available; defect#26-81801 introduced by temporary fix |
 | defect#26-81801 | Defect | Continuously track the recurrence rule of the problem, optimize and debug the code, iteratively repair the defect until the problem is completely resolved | Introduced after temporary fix of bug#26-81701. Window size jitters when dragging window position, not fixed yet |
 
-### Status Definition
-- **Pending**: The problem is confirmed and discovered, no repair work has been carried out temporarily
-- **Temporarily Fixed**: Core faults are resolved, functions are available, with minor defects to be optimized
-- **Fully Fixed & Closed**: All related problems are completely resolved without remaining defects, accepted and passed
-- **Postponed**: The problem is valid and confirmed, and the repair is delayed due to version schedule and priority
 
 ### Update Log
 - 2026-08-17: Recorded bug#26-81701, the original core business function of the project was abnormal, problem registered.
