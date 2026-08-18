@@ -4,28 +4,25 @@ const {
     ipcMain,
     screen
 } = require('electron')
-// const { tr } = require('element-plus/es/locales.mjs')
 const path = require('path')
 
 
 let win
 
+
 function createWindow() {
     win = new BrowserWindow({
         // ----- 尺寸与位置 -----
         width: 900,
-        height: 600,
-        minWidth: 700,
+        minHeight: 500,
         minHeight: 500,
         center: true,
-        titleBarStyle: 'hidden',
+        useContentSize: false,
 
         // ----- 自定义标题栏 -----
         title: 'MOA',
         frame: false,
         transparent: true,
-        webPreferences: { nodeIntegration: true },
-
         // ----- 行为控制 -----
 
         resizable: true,
@@ -51,12 +48,22 @@ function createWindow() {
     // TODO bug#26-81701
     // setInterval(()=>{
     //     win.setPosition(1, 0)
-
     // },100)
-    // win.webContents.openDevTools() 调试器
 
+    // win.webContents.openDevTools() 调试器
     win.on('closed', () => {
         win = null
+    })
+
+    win.on('resize', () => {
+        console.log('resize:', win.getBounds())
+    })
+
+    win.on('move', () => {
+        console.log('move:', win.getBounds())
+    })
+    win.on('will-resize', (event, newBounds) => {
+        console.log("will resize", newBounds)
     })
 
 }
@@ -81,12 +88,8 @@ ipcMain.on('window-close', () => {
 
 // 拖拽
 ipcMain.handle('custom-adsorption', (event, res) => {
-    // const [w, h] = win.getSize()
-    // const [x, y] = win.getPosition()
-    console.log('ps: ' + win.getPosition())
-    console.log('size: ' + win.getSize())
-    console.log('data: ' + res.appX + ',' + res.appY)
-
+    // console.log('data: ' + res.appX + ',' + res.appY)
+    // console.log("before", win.getBounds())
 
     // win.setSize(win.getSize())
     // win.setBounds({
@@ -99,8 +102,13 @@ ipcMain.handle('custom-adsorption', (event, res) => {
     // const fiY = y - res.appY;
     // win.setPosition(fiX, fiY)
     // TODO bug#26-81701
+
     win.setPosition(res.appX, res.appY)
+
     // win.setPosition(-1, 0)
+    // setTimeout(() => {
+    //     console.log("after", win.getBounds())
+    // }, 500)
 })
 
 
@@ -114,6 +122,7 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit()
     }
+
 })
 
 
