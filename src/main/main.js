@@ -59,19 +59,15 @@ function createWindow() {
 
     // win.webContents.openDevTools() // 调试器
     win.on('closed', () => {
-
         win = null
     })
 
-    win.on('resize', () => {
-        console.log('resize:', win.getBounds())
-    })
-
-    win.on('move', () => {
-        console.log('move:', win.getBounds())
-    })
-
-
+    // win.on('resize', () => {
+    //     console.log('resize:', win.getBounds())
+    // })
+    // win.on('move', () => {
+    //     console.log('move:', win.getBounds())
+    // })
 }
 
 
@@ -84,33 +80,12 @@ function createWindow() {
 // 最小化
 ipcMain.on('window-minimize', () => {
     if (win) win.minimize()
-
 })
+
 
 
 // 关闭
 ipcMain.on('window-close', () => {
-    // 淡出效果
-    let opacity = 1
-    let [w, h] = win.getSize()
-
-    const timer = setInterval(() => {
-
-        opacity -= 0.1
-        w -= 5
-        h -= 5
-        
-        win.setOpacity(opacity)
-        win.setTra(w, h)
-
-        if (opacity <= 0) {
-
-            clearInterval(timer)
-
-            win.close()
-        }
-
-    }, 30)
     win.close()
 })
 

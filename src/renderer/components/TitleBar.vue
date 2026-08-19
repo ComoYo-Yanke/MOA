@@ -11,9 +11,13 @@
 
         <!-- 右侧窗口按钮 -->
         <div class="window-controls">
-
             <button class="window-button" @click="minimizeWindow">
-                −
+                <!-- <el-icon :size="30" :color="white"><Minus /></el-icon> -->
+                <el-icon :size="20"><Setting /></el-icon>
+            </button>
+            <button class="window-button" @click="minimizeWindow">
+                <!-- <el-icon :size="30" :color="white"><Minus /></el-icon> -->
+                <el-icon :size="18"><SemiSelect /></el-icon>
             </button>
 
             <button class="window-button close-button" @click="closeWindow">
@@ -136,22 +140,15 @@ const emit = defineEmits([
     'close'
 ])
 
+// 最小化和关闭信号
+function minimizeWindow() {emit('minimize')}
+function closeWindow() {emit('close')}
 
-function minimizeWindow() {
-    emit('minimize')
-    // window.electronWindow.minimizeWindow()
-}
-
-function closeWindow() {
-
-
-    emit('close')
-    // window.electronWindow.closeWindow()
-}
 let isKeyDown = ref(false)
 let dinatesX = ref(0)
 let dinatesY = ref(0)
 
+// 拖拽逻辑
 const mouseDown = (e) => {
     isKeyDown.value = true
     dinatesX.value = e.x

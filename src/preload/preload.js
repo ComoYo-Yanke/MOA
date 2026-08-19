@@ -26,4 +26,5 @@ contextBridge.exposeInMainWorld('electronWindow', {
 
     customAdsorption: (data) => 
         ipcRenderer.invoke('custom-adsorption', data),
+
 })
