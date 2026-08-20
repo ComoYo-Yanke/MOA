@@ -11,13 +11,17 @@
 
         <!-- 右侧窗口按钮 -->
         <div class="window-controls">
-            <button class="window-button" @click="minimizeWindow">
+            <button class="window-button" @click="openSettings">
                 <!-- <el-icon :size="30" :color="white"><Minus /></el-icon> -->
-                <el-icon :size="20"><Setting /></el-icon>
+                <el-icon :size="20">
+                    <Setting />
+                </el-icon>
             </button>
             <button class="window-button" @click="minimizeWindow">
                 <!-- <el-icon :size="30" :color="white"><Minus /></el-icon> -->
-                <el-icon :size="18"><SemiSelect /></el-icon>
+                <el-icon :size="18">
+                    <SemiSelect />
+                </el-icon>
             </button>
 
             <button class="window-button close-button" @click="closeWindow">
@@ -141,46 +145,19 @@ const emit = defineEmits([
 ])
 
 // 最小化和关闭信号
-function minimizeWindow() {emit('minimize')}
-function closeWindow() {emit('close')}
-
-let isKeyDown = ref(false)
-let dinatesX = ref(0)
-let dinatesY = ref(0)
+function minimizeWindow() { emit('minimize') }
+function closeWindow() { emit('close') }
+function openSettings() { }
 
 // 拖拽逻辑
-const mouseDown = (e) => {
-    isKeyDown.value = true
-    dinatesX.value = e.x
-    dinatesY.value = e.y
-    document.onmousemove = (event) => {
-        if (isKeyDown.value) {
-            const x = event.screenX - dinatesX.value
-            const y = event.screenY - dinatesY.value
-            // const x = dinatesX.value - event.screenX
-            // const y = dinatesY.value - event.screenY
-            // 给主进程传入坐标
-            let data = {
-                appX: x,
-                appY: y
-            }
-
-            try {
-                window.electronWindow.customAdsorption(data)
-            } catch (err) {
-                console.error('拖拽IPC异常', err)
-            }
+const mouseDown = () => {
+    document.onmousemove = () => {
+        try {
+            window.electronWindow.customAdsorption()
+        } catch (err) {
+            console.error('拖拽IPC异常', err)
         }
-
-
     };
-    document.onmouseup = (event) => {
-        isKeyDown.value = false;
-        // ✅清空事件，防止多次绑定
-        document.onmousemove = null
-        document.onmouseup = null
-    }
-
 }
 
 </script>

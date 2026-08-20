@@ -8,11 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "electron": "electron .",
-    "start": "npm run dev & npm run electron",
+    "start": "npm run clean && npm run build && npm run dev & npm run electron",
     "build": "tsc",
     "watch": "tsc -w",
-    "clean": "rmdir /s /q dist",
-    "start": "npm run clean && npm run build && npm run dev & npm run electron"
+    "clean": "rmdir /s /q dist"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +20,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "@vitejs/plugin-vue": "^6.0.8",
+    "electron-click-drag-plugin": "^2.0.2",
     "element-plus": "^2.14.4",
     "vite": "^8.2.1",
     "vue": "^3.5.41"

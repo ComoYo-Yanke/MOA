@@ -1,6 +1,8 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import type { AdsorptionData } from '../types/electron.d';
+import { startDrag } from 'electron-click-drag-plugin';
+const dragAddon = require('electron-click-drag-plugin')
 
 let win: BrowserWindow | null = null;
 const change: number[] = [0, 2, 1, 2, 1, 2, 2, 2];
@@ -35,7 +37,7 @@ function createWindow(): void {
     win.loadURL('http://localhost:5173');
 
 
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools(); // 开发者工具
 
     win.on('closed', () => {
         win = null;
@@ -53,18 +55,12 @@ ipcMain.on('window-close', (): void => {
 });
 
 // 拖拽
-ipcMain.handle('custom-adsorption', (event: Electron.IpcMainInvokeEvent, res: AdsorptionData): void => {
+ipcMain.handle('custom-adsorption', (): void => {
     if (!win) return;  // 添加 null 检查
-
-    const x: number = res.appX;
-    const y: number = res.appY;
-    const [w, h] = win.getSize();
-
-    win.setPosition(x, y);
-    win.setSize(
-        w - change[Math.abs(x) % 8],
-        h - change[Math.abs(y) % 8]
-    );
+    // 插件拖拽逻辑
+    const hwnd:Buffer = win.getNativeWindowHandle();
+    let winId:Buffer | number = hwnd;
+    dragAddon.startDrag(winId);
 });
 
 app.whenReady().then(createWindow);

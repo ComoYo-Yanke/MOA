@@ -24,8 +24,8 @@ const electronWindow: ElectronWindowAPI = {
         console.log("关闭窗口");
     },
 
-    customAdsorption: (data: AdsorptionData): Promise<void> =>
-        ipcRenderer.invoke('custom-adsorption', data)
+    customAdsorption: (): Promise<void> =>
+        ipcRenderer.invoke('custom-adsorption', )
 };
 
 contextBridge.exposeInMainWorld('electronWindow', electronWindow);

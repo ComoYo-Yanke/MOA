@@ -27,6 +27,7 @@ Unified tracking record for project bugs and defects, used for full lifecycle ma
 ### 更新日志
 - 2026-08-17：录入bug#26-81701，项目原有核心业务功能异常，完成问题登记。
 - 2026-08-18：bug#26-81701执行临时修复；新增录入defect#26-81801，拖拽窗口调整位置出现窗口尺寸抖动，为临时修复引入的缺陷；更新两条工单跟进计划与备注信息。
+- 2026-08-20: defect#26-81801 缺陷修复，使用 electron-click-drag-plugin 插件替代纯自定义窗口拖拽逻辑，完全修复 bug 以及 缺陷
 
 ---
 <a id="english"></a>
@@ -49,3 +50,4 @@ This document uniformly records functional bugs and defects during project itera
 ### Update Log
 - 2026-08-17: Recorded bug#26-81701, the original core business function of the project was abnormal, problem registered.
 - 2026-08-18: Performed temporary fix for bug#26-81701; Added defect#26-81801, window size jitter occurs when dragging window, introduced by temporary fix; Updated follow‑up plan and remarks for both records.
+- 2026-08-20: defect#26-81801 Defect fix: replace fully‑custom window‑dragging logic with electron‑click‑drag‑plugin to completely resolve bugs and defects.
