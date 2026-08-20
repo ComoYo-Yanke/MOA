@@ -18,6 +18,7 @@ contextBridge.exposeInMainWorld('electronWindow', {
 
     minimizeWindow: () => {
         ipcRenderer.send('window-minimize')
+        
     },
 
     closeWindow: () => {

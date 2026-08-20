@@ -1,18 +1,22 @@
 {
-  "name": "my-mc-assistant",
+  "name": "Mincraft Online Assistant",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main/main.js",
+  "main": "dist/main/main.js",
   "dev": "vite & electron .",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "electron": "electron .",
-    "start": "npm run dev & npm run electron"
+    "start": "npm run dev & npm run electron",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rmdir /s /q dist",
+    "start": "npm run clean && npm run build && npm run dev & npm run electron"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
@@ -22,7 +26,10 @@
     "vue": "^3.5.41"
   },
   "devDependencies": {
+    "@types/electron": "^1.4.38",
+    "@types/node": "^26.2.0",
     "electron": "^43.4.0",
+    "typescript": "^7.0.2",
     "vite-plugin-electron": "^1.1.1"
   }
 }

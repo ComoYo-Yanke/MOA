@@ -3,7 +3,9 @@
         fadeOut: fading,
         closeOut: closing
     }" @animationend="animationEnd">
-        <TitleBar @minimize="minimizeWindow" @close="closeWindow" />
+        <TitleBar 
+        @minimize="minimizeWindow" 
+        @close="closeWindow" />
         <Home />
         <!-- <router-view/> -->
     </div>

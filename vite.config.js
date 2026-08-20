@@ -7,12 +7,12 @@ export default defineConfig({
     base: './',
     root: resolve(__dirname, 'src/renderer'),
     server: {
-        port: 5173
+        port: 5173,
+        strictPort: true  // ✅ 如果端口被占用则报错
     },
     resolve: {
         alias: {
             '@': resolve(__dirname, 'src/renderer')
         }
     },
-    include:['element-plus']
 })
