@@ -20,6 +20,7 @@ export interface ElectronWindowAPI {
     minimizeWindow: () => void;
     closeWindow: () => void;
     customAdsorption: (data: AdsorptionData) => Promise<void>;
+    openSettings: () => void;
 }
 
 // 扩展 Window 接口

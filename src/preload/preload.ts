@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import type { AdsorptionData, Versions, ElectronWindowAPI } from '../types/electron.d';
+import type { Versions, ElectronWindowAPI } from '../types/electron.d';
 
 const electronWindow: ElectronWindowAPI = {
     // 版本信息 - ✅ 修复 Versions 类型
@@ -25,7 +25,11 @@ const electronWindow: ElectronWindowAPI = {
     },
 
     customAdsorption: (): Promise<void> =>
-        ipcRenderer.invoke('custom-adsorption', )
+        ipcRenderer.invoke('custom-adsorption'),
+
+    openSettings: (): void => {
+        ipcRenderer.send('open-settings');
+    }
 };
 
 contextBridge.exposeInMainWorld('electronWindow', electronWindow);

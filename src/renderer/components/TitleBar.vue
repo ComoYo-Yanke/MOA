@@ -12,7 +12,6 @@
         <!-- 右侧窗口按钮 -->
         <div class="window-controls">
             <button class="window-button" @click="openSettings">
-                <!-- <el-icon :size="30" :color="white"><Minus /></el-icon> -->
                 <el-icon :size="20">
                     <Setting />
                 </el-icon>
@@ -129,9 +128,7 @@
                     </g>
                 </svg>
             </button>
-
         </div>
-
     </div>
 </template>
 
@@ -147,7 +144,7 @@ const emit = defineEmits([
 // 最小化和关闭信号
 function minimizeWindow() { emit('minimize') }
 function closeWindow() { emit('close') }
-function openSettings() { }
+function openSettings() {    }
 
 // 拖拽逻辑
 const mouseDown = () => {
