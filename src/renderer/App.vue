@@ -6,8 +6,7 @@
         <TitleBar 
         @minimize="minimizeWindow" 
         @close="closeWindow" />
-        <Home />
-        <!-- <router-view/> -->
+        <router-view/>
     </div>
 
 </template>

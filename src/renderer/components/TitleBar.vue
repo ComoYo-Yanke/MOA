@@ -1,5 +1,5 @@
 <template>
-    <div class="title-bar" @mousedown="mouseDown">
+    <div class="title-bar" @mousedown="mouseDown" @mouseup="mouseUp">
 
         <!-- 左侧 -->
         <div class="title-bar-left">
@@ -134,7 +134,10 @@
 
 
 <script setup>
+import { fa } from 'element-plus/es/locales.mjs';
 import { ref } from 'vue';
+
+const isMouseDown = ref(false);
 
 const emit = defineEmits([
     'minimize',
@@ -144,17 +147,26 @@ const emit = defineEmits([
 // 最小化和关闭信号
 function minimizeWindow() { emit('minimize') }
 function closeWindow() { emit('close') }
-function openSettings() {    }
+function openSettings() { }
+
 
 // 拖拽逻辑
 const mouseDown = () => {
+    isMouseDown.value = true;
     document.onmousemove = () => {
-        try {
-            window.electronWindow.customAdsorption()
-        } catch (err) {
-            console.error('拖拽IPC异常', err)
+        if (isMouseDown.value) {
+            try {
+                console.log("拖拽！")
+                window.electronWindow.customAdsorption()
+            } catch (err) {
+                console.error('拖拽IPC异常', err)
+            }
         }
     };
+}
+
+const mouseUp = () => {
+    isMouseDown.value = false;
 }
 
 </script>
@@ -207,8 +219,8 @@ const mouseDown = () => {
 }
 
 .title {
-    font-size: 12px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    font-family: var(--family-title);
 }
 
 
