@@ -1,132 +1,133 @@
 :root {
 
-   /* =========================
+    /* =========================
    主色
        ========================= */
 
-   --color-primary: #4caf50;
-   --color-primary-hover: #66bb6a;
-   --color-primary-active: #388e3c;
+    --color-primary: #4caf50;
+    --color-primary-hover: #66bb6a;
+    --color-primary-active: #388e3c;
 
 
-   /* =========================
+    /* =========================
     背景
        ========================= */
 
-   --color-bg: #e9eeefd3;
-   --color-bg-secondary: #bfbdbdcd;
-   --color-bg-tertiary: #010000cd;
-   --color-bg-border: #81818151;
+    --color-bg: #e9eeefd3;
+    --color-bg-secondary: #bfbdbdcd;
+    --color-bg-tertiary: #010000cd;
+    --color-bg-border: #81818151;
+    --color-bg-home-left-bar: #ffffff74;
 
 
-   /* =========================
+    /* =========================
    文字
        ========================= */
 
-   --color-text: #1f1f1f;
-   --color-text-secondary: #090909;
-   --color-text-muted: #777777;
-   --color-title: #1c57e1cd;
-   --color-selected-text:#15a0ea;
-   --family-title: sans-serif;
+    --color-text: #1f1f1f;
+    --color-text-secondary: #090909;
+    --color-text-muted: #777777;
+    --color-title: #1c57e1cd;
+    --color-selected-text: #15a0ea;
+    --family-title: sans-serif;
 
-   /* =========================
+    /* =========================
     边框
        ========================= */
 
-   --color-border: #333333;
-   --color-border-light: #444444;
+    --color-border: #333333;
+    --color-border-light: #444444;
 
 
-   /* =========================
+    /* =========================
     状态颜色
        ========================= */
 
-   --color-success: #4caf50;
-   --color-warning: #ff9800;
-   --color-danger: #f44336;
-   --color-info: #2196f3;
+    --color-success: #4caf50;
+    --color-warning: #ff9800;
+    --color-danger: #f44336;
+    --color-info: #2196f3;
 
 
-   /* =========================
+    /* =========================
    标题栏
        ========================= */
 
-   --titlebar-bg: #0751ffcb;
-   --titlebar-text: #ffffff;
-   --titlebar-button-hover: rgba(255, 255, 255, 0.1);
-   --titlebar-close-hover: #6790f6;
+    --titlebar-bg: #0751ffcb;
+    --titlebar-text: #ffffff;
+    --titlebar-button-hover: rgba(255, 255, 255, 0.1);
+    --titlebar-close-hover: #6790f6;
 
 
-   /* =========================
+    /* =========================
    Sidebar
        ========================= */
 
-   --sidebar-bg: #181818;
-   --sidebar-item-hover: #252525;
-   --sidebar-item-active: #2e7d32;
+    --sidebar-bg: #181818;
+    --sidebar-item-hover: #252525;
+    --sidebar-item-active: #2e7d32;
 
 
-   /* =========================
+    /* =========================
     输入框
        ========================= */
 
-   --input-bg: #1e1e1e;
-   --input-border: #333333;
-   --input-border-focus: var(--color-primary);
+    --input-bg: #1e1e1e;
+    --input-border: #333333;
+    --input-border-focus: var(--color-primary);
 
 
-   /* =========================
+    /* =========================
     圆角
        ========================= */
 
-   --radius-small: 4px;
-   --radius-medium: 8px;
-   --radius-large: 12px;
+    --radius-small: 4px;
+    --radius-medium: 8px;
+    --radius-large: 12px;
 
 
-   /* =========================
+    /* =========================
     阴影
        ========================= */
 
-   --shadow-small: 0 2px 6px rgba(0, 0, 0, 0.15);
-   --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --shadow-small: 0 2px 6px rgba(0, 0, 0, 0.15);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.2);
 
 
-   /* =========================
+    /* =========================
     动画
        ========================= */
 
-   --transition-fast: 0.15s ease;
-   --transition-normal: 0.25s ease;
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
 }
 
 [data-theme="light"] {
 
-   --color-primary: #388e3c;
-   --color-primary-hover: #2e7d32;
-   --color-primary-active: #1b5e20;
+    --color-primary: #388e3c;
+    --color-primary-hover: #2e7d32;
+    --color-primary-active: #1b5e20;
 
-   --color-bg: #f5f5f5;
-   --color-bg-secondary: #ffffff;
-   --color-bg-tertiary: #eeeeee;
+    --color-bg: #f5f5f5;
+    --color-bg-secondary: #ffffff;
+    --color-bg-tertiary: #eeeeee;
 
-   --color-text: #222222;
-   --color-text-secondary: #555555;
-   --color-text-muted: #888888;
+    --color-text: #222222;
+    --color-text-secondary: #555555;
+    --color-text-muted: #888888;
 
-   --color-border: #dddddd;
-   --color-border-light: #cccccc;
+    --color-border: #dddddd;
+    --color-border-light: #cccccc;
 
-   --titlebar-bg: #ffffff;
-   --titlebar-text: #222222;
-   --titlebar-button-hover: rgba(0, 0, 0, 0.08);
+    --titlebar-bg: #ffffff;
+    --titlebar-text: #222222;
+    --titlebar-button-hover: rgba(0, 0, 0, 0.08);
 
-   --sidebar-bg: #eeeeee;
-   --sidebar-item-hover: #e0e0e0;
-   --sidebar-item-active: #c8e6c9;
+    --sidebar-bg: #eeeeee;
+    --sidebar-item-hover: #e0e0e0;
+    --sidebar-item-active: #c8e6c9;
 
-   --input-bg: #ffffff;
-   --input-border: #dddddd;
+    --input-bg: #ffffff;
+    --input-border: #dddddd;
 
 }
